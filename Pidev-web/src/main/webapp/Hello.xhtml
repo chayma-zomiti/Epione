@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<style type="text/css">
+.ui-steps .ui-steps-item {
+	width: 24%;
+}
+
+.ui-state-highlight {
+	text-shadow: none !important;
+}
+
+.ui-steps.custom {
+	margin-bottom: 30px;
+}
+
+.ui-steps.custom .ui-steps-item .ui-menuitem-link {
+	height: 10px;
+	padding: 0 1em;
+}
+
+.ui-steps.custom .ui-steps-item .ui-steps-number {
+	background-color: #0081c2;
+	color: #FFFFFF;
+	display: inline-block;
+	width: 30px;
+	border-radius: 10px;
+	margin-top: -10px;
+	margin-bottom: 10px;
+}
+
+.ui-steps.custom .ui-steps-item.ui-state-highlight .ui-steps-title {
+	color: #555;
+}
+</style>
+	<title>todos</title>
+</h:head>
+<h:body>
+	<h2>DoctorList</h2>
+	
+		<p:tabMenu >
+			<p:menuitem value="Doctors"  url="/Hello.jsf">
+				<f:param name="i" value="0" />
+			</p:menuitem>
+			<p:menuitem value="Doctolibs Consomation" url="/Doctolib.jsf">
+				<f:param name="i" value="1" />
+			</p:menuitem>
+			<p:menuitem value="Reclamation" url="/reclamation.jsf">
+				<f:param name="i" value="1" />
+			</p:menuitem>
+			
+		</p:tabMenu>
+		
+		<h:form>
+<p:dataTable var="doctor" value="#{dtDoctorsDoctolib.doctors2}">
+    
+ 
+   
+    <p:column headerText="Appointement Date">
+        <h:outputText value="#{doctor.firstname}" />
+    </p:column>
+    
+    <p:column headerText="Appointement Reason">
+        <h:outputText value="#{doctor.speciality}" />
+    </p:column>
+    <p:column headerText="Appointement id">
+        <h:outputText value="#{doctor.number}" />
+    </p:column>
+    <p:column headerText="Reclamer ">
+         
+    <h:commandLink value="reclamer" action="#{reclamationBean.addReclamation()}" />
+    </p:column>
+ 
+
+ 
+</p:dataTable>
+
+</h:form>
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
+ 
+ 
+       <p:gmap center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:100%;height:400px" />
+
+</h:body>
+</html>
